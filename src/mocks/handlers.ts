@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import books from './books.json';
 
 export const handlers = [
   rest.get('/fee-assessment-categories', (req, res, ctx) => {
@@ -12,5 +13,8 @@ export const handlers = [
         { id: 21, name: 'Investment \u0026 Finance' },
       ])
     );
+  }),
+  rest.get('/fee-assessment-books', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(books));
   }),
 ];
