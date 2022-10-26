@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
 
 type categoryType = {
   id: string;
@@ -32,11 +33,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="#">B3k3n</a>
-        <a href="#">Bookmark</a>
-      </div>
-
+      <Navbar />
       <div>
         <h2>Select Category</h2>
         {categories ? (
