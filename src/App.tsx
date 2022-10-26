@@ -6,6 +6,7 @@ import PageControl from './components/PageControl';
 
 import { CategoryType } from './types/category.type';
 import { BookType } from './types/book.type';
+import BookCard from './components/BookCard';
 
 function App() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -27,17 +28,7 @@ function App() {
       <CategoryField categories={categories} />
 
       <PageControl>
-        <div>
-          {books.map((book) => {
-            return (
-              <div key={book.id}>
-                <img src={book.cover_url} alt={book.title.toLowerCase()} />
-                <h2>{book.title}</h2>
-                <p>{book.authors.join(',')}</p>
-              </div>
-            );
-          })}
-        </div>
+        <BookCard books={books} />
       </PageControl>
     </div>
   );
