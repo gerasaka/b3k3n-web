@@ -33,6 +33,12 @@ function App() {
   return (
     <>
       <div>
+        <a href="#">B3k3n</a>
+        <a href="#">Bookmark</a>
+      </div>
+
+      <div>
+        <h2>Select Category</h2>
         {categories ? (
           categories.map((category) => {
             return (
@@ -40,6 +46,7 @@ function App() {
                 <input
                   type="radio"
                   name="category"
+                  value={category.name.toLowerCase()}
                   id={category.name.toLowerCase()}
                 />
                 <label htmlFor={category.name.toLocaleLowerCase()}>
@@ -49,8 +56,17 @@ function App() {
             );
           })
         ) : (
-          <h1>Hello World</h1>
+          <p>No category at this time</p>
         )}
+      </div>
+      <div>
+        <h1>Happiness & Mindfullness</h1>
+        <hr />
+        <input type="search" name="search" id="" />
+        <select name="sort" id="sort">
+          <option value="ascending">A - Z</option>
+          <option value="deescending">Z - A</option>
+        </select>
       </div>
       <div>
         {books ? (
