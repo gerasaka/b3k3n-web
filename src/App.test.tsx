@@ -2,7 +2,29 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-describe('App', () => {
+describe('Display', () => {
+  test('show navbar', () => {
+    render(<App />);
+
+    const logo = screen.getByText(/b3k3n/i);
+    const bookmarkBtn = screen.getByText(/bookmark/i);
+
+    expect(logo).toBeInTheDocument();
+    expect(bookmarkBtn).toBeInTheDocument();
+  });
+
+  test('show search field and sort button', () => {
+    render(<App />);
+
+    const searchField = screen.getByRole('searchbox');
+    const sortButton = screen.getByRole('combobox');
+
+    expect(searchField).toBeInTheDocument();
+    expect(sortButton).toBeInTheDocument();
+  });
+});
+
+describe('API', () => {
   test('show response from sejutacita category API', async () => {
     render(<App />);
 
