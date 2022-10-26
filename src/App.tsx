@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CategoryField from './components/CategoryField';
 import Navbar from './components/Navbar';
 
 type categoryType = {
@@ -34,28 +35,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <div>
-        <h2>Select Category</h2>
-        {categories ? (
-          categories.map((category) => {
-            return (
-              <div key={category.id}>
-                <input
-                  type="radio"
-                  name="category"
-                  value={category.name.toLowerCase()}
-                  id={category.name.toLowerCase()}
-                />
-                <label htmlFor={category.name.toLocaleLowerCase()}>
-                  {category.name}
-                </label>
-              </div>
-            );
-          })
-        ) : (
-          <p>No category at this time</p>
-        )}
-      </div>
+      <CategoryField />
+
       <div>
         <h1>Happiness & Mindfullness</h1>
         <hr />
