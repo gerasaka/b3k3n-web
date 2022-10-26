@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="py-4 max-w-5xl mx-auto">
       <Navbar />
       <CategoryField />
 
@@ -51,7 +51,7 @@ function App() {
           })}
         </div>
       </PageControl>
-    </>
+    </div>
   );
 }
 

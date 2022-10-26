@@ -15,3 +15,7 @@
     @apply text-cape-cod;
   }
 }
+
+html {
+  @apply bg-seashell-peach;
+}
