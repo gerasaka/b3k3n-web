@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react';
+
 import CategoryField from './components/CategoryField';
 import Navbar from './components/Navbar';
 import PageControl from './components/PageControl';
 
-type categoryType = {
-  id: string;
-  name: string;
-};
-
-type bookType = {
-  id: number;
-  title: string;
-  categoryId: number;
-  authors: [];
-  cover_url: string;
-  description: string;
-  sections: [];
-  audio_length: number;
-};
+import { CategoryType } from './types/category.type';
+import { BookType } from './types/book.type';
 
 function App() {
-  const [categories, setCategories] = useState<categoryType[]>();
-  const [books, setBooks] = useState<bookType[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [books, setBooks] = useState<BookType[]>([]);
 
   useEffect(() => {
     fetch('/fee-assessment-categories')
@@ -36,7 +24,7 @@ function App() {
   return (
     <div className="py-4 max-w-5xl mx-auto">
       <Navbar />
-      <CategoryField />
+      <CategoryField categories={categories} />
 
       <PageControl>
         <div>
