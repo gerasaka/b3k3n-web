@@ -22,21 +22,27 @@ describe('Display', () => {
     expect(searchField).toBeInTheDocument();
     expect(sortButton).toBeInTheDocument();
   });
+
+  test('show card with book data', async () => {
+    render(<App />);
+
+    const bookCover = await screen.findAllByRole('img');
+    const bookTitle = screen.getByText(/The Intelligent Investor/i);
+    const bookAuthors = screen.getByText(/Benjamin Graham/i);
+
+    expect(bookCover).toHaveLength(4);
+    expect(bookTitle).toBeInTheDocument();
+    expect(bookAuthors).toBeInTheDocument();
+  });
 });
 
 describe('API', () => {
   test('show response from sejutacita category API', async () => {
     render(<App />);
 
-    const renderItems = await Promise.all([
-      screen.findAllByRole('radio'),
-      screen.findByText('Happiness \u0026 Mindfulness'),
-      screen.findByText('Career \u0026 Business'),
-    ]);
-
-    const listOfCategories = renderItems[0];
-    const firstCategory = renderItems[1];
-    const secondCategory = renderItems[2];
+    const listOfCategories = await screen.findAllByRole('radio');
+    const firstCategory = screen.getByText('Happiness \u0026 Mindfulness');
+    const secondCategory = screen.getByText('Career \u0026 Business');
 
     expect(listOfCategories).toHaveLength(5);
     expect(firstCategory).toBeInTheDocument();
@@ -47,7 +53,7 @@ describe('API', () => {
     render(<App />);
 
     const renderItems = await Promise.all([
-      screen.findAllByRole('listitem'),
+      screen.findAllByRole('img'),
       screen.findByText('The Intelligent Investor'),
       screen.findByText('Eat to Live'),
     ]);
