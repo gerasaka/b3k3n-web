@@ -70,11 +70,15 @@ function App() {
       </div>
       <div>
         {books ? (
-          <ul>
-            {books.map((book) => {
-              return <li key={book.id}>{book.title}</li>;
-            })}
-          </ul>
+          books.map((book) => {
+            return (
+              <div key={book.id}>
+                <img src={book.cover_url} alt={book.title.toLowerCase()} />
+                <h2>{book.title}</h2>
+                <p>{book.authors.join(',')}</p>
+              </div>
+            );
+          })
         ) : (
           <h2>Hello the second world</h2>
         )}
