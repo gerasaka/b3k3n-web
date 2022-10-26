@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import CategoryField from './components/CategoryField';
 import Navbar from './components/Navbar';
 import PageControl from './components/PageControl';
+import BookCard from './components/BookCard';
+import Pagination from './components/Pagination';
 
 import { CategoryType } from './types/category.type';
 import { BookType } from './types/book.type';
-import BookCard from './components/BookCard';
 
 function App() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -26,10 +27,9 @@ function App() {
     <div className="py-4 max-w-5xl mx-auto">
       <Navbar />
       <CategoryField categories={categories} />
-
-      <PageControl>
-        <BookCard books={books} />
-      </PageControl>
+      <PageControl />
+      <BookCard books={books} />
+      <Pagination />
     </div>
   );
 }
