@@ -1,7 +1,11 @@
 import React from 'react';
 import Pagination from './Pagination';
 
-const PageControl = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const PageControl = ({ children }: Props) => {
   return (
     <div>
       <h2>Happiness & Mindfullness</h2>
@@ -11,6 +15,7 @@ const PageControl = () => {
         <option value="ascending">A - Z</option>
         <option value="descending">Z - A</option>
       </select>
+      {children}
       <Pagination />
     </div>
   );

@@ -21,7 +21,7 @@ type bookType = {
 
 function App() {
   const [categories, setCategories] = useState<categoryType[]>();
-  const [books, setBooks] = useState<bookType[]>();
+  const [books, setBooks] = useState<bookType[]>([]);
 
   useEffect(() => {
     fetch('/fee-assessment-categories')
@@ -38,10 +38,9 @@ function App() {
       <Navbar />
       <CategoryField />
 
-      <PageControl />
-      <div>
-        {books ? (
-          books.map((book) => {
+      <PageControl>
+        <div>
+          {books.map((book) => {
             return (
               <div key={book.id}>
                 <img src={book.cover_url} alt={book.title.toLowerCase()} />
@@ -49,11 +48,9 @@ function App() {
                 <p>{book.authors.join(',')}</p>
               </div>
             );
-          })
-        ) : (
-          <h2>Hello the second world</h2>
-        )}
-      </div>
+          })}
+        </div>
+      </PageControl>
     </>
   );
 }
