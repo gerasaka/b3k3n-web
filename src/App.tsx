@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CategoryField from './components/CategoryField';
 import Navbar from './components/Navbar';
+import PageControl from './components/PageControl';
 
 type categoryType = {
   id: string;
@@ -37,15 +38,7 @@ function App() {
       <Navbar />
       <CategoryField />
 
-      <div>
-        <h1>Happiness & Mindfullness</h1>
-        <hr />
-        <input type="search" name="search" id="" />
-        <select name="sort" id="sort">
-          <option value="ascending">A - Z</option>
-          <option value="deescending">Z - A</option>
-        </select>
-      </div>
+      <PageControl />
       <div>
         {books ? (
           books.map((book) => {

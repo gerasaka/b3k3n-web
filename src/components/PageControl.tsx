@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from './Pagination';
 
 const PageControl = () => {
   return (
@@ -10,6 +11,7 @@ const PageControl = () => {
         <option value="ascending">A - Z</option>
         <option value="descending">Z - A</option>
       </select>
+      <Pagination />
     </div>
   );
 };
