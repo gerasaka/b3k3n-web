@@ -1,33 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { CategoryType } from '../types/category.type';
+import { ParamType } from '../types/param.type';
 
 type Props = {
   categories: CategoryType[];
+  setParams: React.Dispatch<React.SetStateAction<ParamType>>;
 };
 
-const CategoryField = ({ categories }: Props) => {
+const CategoryField = ({ categories, setParams }: Props) => {
+  const [selectedCategory, setSelectedCategory] = useState(1);
+
+  const handleCategoryChange = (id: string) => {
+    setParams({ categoryId: Number(id), page: 0 });
+    setSelectedCategory(Number(id));
+  };
+
   return (
     <div className="text-center">
       <p className="text-xl font-bold mb-4">Select Category</p>
 
       <div className="flex justify-center flex-wrap gap-4">
         {categories.map((category) => {
+          const selected = selectedCategory === Number(category.id);
+
           return (
-            <>
-              <input
-                type="radio"
-                value={category.id}
-                name={category.name.toLowerCase()}
-                className="hidden"
-              />
-              <label
-                htmlFor={category.name.toLowerCase()}
-                className="bg-gainsboro checked:bg-paradiso py-2 px-8 rounded-full"
-              >
-                {category.name}
-              </label>
-            </>
+            <button
+              key={category.id}
+              onClick={() => handleCategoryChange(category.id)}
+              className={`${
+                selected ? 'bg-paradiso text-seashell-peach' : 'bg-gainsboro'
+              } text-sm py-2 px-6 rounded-full`}
+            >
+              {category.name}
+            </button>
           );
         })}
       </div>
