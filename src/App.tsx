@@ -22,10 +22,13 @@ function App() {
 
   useEffect(() => {
     getCategories().then((categories) => setCategories(categories));
-    getBooks().then((books) => setBooks(books));
   }, []);
 
-  console.log(params);
+  useEffect(() => {
+    getBooks(params).then((books) => setBooks(books));
+    console.log('fetch book');
+  }, [params]);
+
   return (
     <div className="py-4 max-w-5xl mx-auto">
       <Navbar />
