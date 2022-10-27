@@ -9,18 +9,15 @@ import Pagination from './components/Pagination';
 import { CategoryType } from './types/category.type';
 import { BookType } from './types/book.type';
 
+import { getCategories, getBooks } from './utils/api';
+
 function App() {
-  const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [books, setBooks] = useState<BookType[]>([]);
+  const [categories, setCategories] = useState<CategoryType[] | []>([]);
+  const [books, setBooks] = useState<BookType[] | []>([]);
 
   useEffect(() => {
-    fetch('/fee-assessment-categories')
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-
-    fetch('/fee-assessment-books?categoryId=1&page=1&size=20')
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
+    getCategories().then((categories) => setCategories(categories));
+    getBooks().then((books) => setBooks(books));
   }, []);
 
   return (
