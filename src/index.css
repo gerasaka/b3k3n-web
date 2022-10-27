@@ -11,7 +11,9 @@
   h3,
   p,
   a,
-  label {
+  label,
+  button,
+  span {
     @apply text-cape-cod;
   }
 }
