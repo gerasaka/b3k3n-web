@@ -1,4 +1,4 @@
 export type ParamType = {
   categoryId: number;
-  page?: number;
+  page: number;
 };

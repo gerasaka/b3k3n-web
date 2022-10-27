@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { ParamType } from '../types/param.type';
+
 type Props = {
   currentPage: number;
+  setPage: React.Dispatch<React.SetStateAction<ParamType>>;
 };
 
-const Pagination = ({ currentPage }: Props) => {
+const Pagination = ({ currentPage, setPage }: Props) => {
   let pageBefore = (
     <>
       <button className="invisible">0</button>
@@ -12,18 +15,37 @@ const Pagination = ({ currentPage }: Props) => {
     </>
   );
 
+  const handlePageChange = (page: number) => {
+    setPage((prev) => ({ ...prev, page }));
+  };
+
   if (currentPage > 1) {
     pageBefore = (
       <>
-        <button className="font-serif text-lg">{currentPage}</button>
-        <button className="font-serif text-lg">{currentPage - 1}</button>
+        <button
+          className="font-serif text-lg"
+          onClick={() => handlePageChange(currentPage - 2)}
+        >
+          {currentPage - 1}
+        </button>
+        <button
+          className="font-serif text-lg"
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          {currentPage}
+        </button>
       </>
     );
   } else if (currentPage > 0) {
     pageBefore = (
       <>
         <button className="invisible">0</button>
-        <button className="font-serif text-lg">{currentPage}</button>;
+        <button
+          className="font-serif text-lg"
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          {currentPage}
+        </button>
       </>
     );
   }
@@ -40,8 +62,18 @@ const Pagination = ({ currentPage }: Props) => {
             </span>
           </span>
         </button>
-        <button className="font-serif text-lg">{currentPage + 2}</button>
-        <button className="font-serif text-lg">{currentPage + 3}</button>
+        <button
+          className="font-serif text-lg"
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          {currentPage + 2}
+        </button>
+        <button
+          className="font-serif text-lg"
+          onClick={() => handlePageChange(currentPage + 2)}
+        >
+          {currentPage + 3}
+        </button>
       </div>
     </div>
   );

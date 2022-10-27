@@ -26,7 +26,6 @@ function App() {
 
   useEffect(() => {
     getBooks(params).then((books) => setBooks(books));
-    console.log('fetch book');
   }, [params]);
 
   return (
@@ -35,7 +34,7 @@ function App() {
       <CategoryField categories={categories} setParams={setParams} />
       <PageControl />
       <BookCard books={books} />
-      <Pagination />
+      <Pagination currentPage={params.page} setPage={setParams} />
     </div>
   );
 }
