@@ -12,7 +12,11 @@ import { ParamType } from '../types/param.type';
 
 import { getBooks, getCategories } from '../utils/api';
 
-const Home = () => {
+type Props = {
+  setBookmark: React.Dispatch<React.SetStateAction<[] | BookType[]>>;
+};
+
+const Home = ({ setBookmark }: Props) => {
   const [categories, setCategories] = useState<CategoryType[] | []>([]);
   const [books, setBooks] = useState<BookType[] | []>([]);
   const [params, setParams] = useState<ParamType>({
