@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { BookType } from '../types/book.type';
 
 type Props = {
@@ -12,13 +12,15 @@ const BookCard = ({ books }: Props) => {
       {books.map((book) => {
         return (
           <div key={book.id} className="basis-0">
-            <img
-              src={book.cover_url}
-              alt={book.title.toLowerCase()}
-              className="m-auto mb-1 w-full"
-            />
-            <h2 className="font-medium">{book.title}</h2>
-            <p className="text-xs">{book.authors.join(', ')}</p>
+            <Link to={`/books/${book.id}`}>
+              <img
+                src={book.cover_url}
+                alt={book.title.toLowerCase()}
+                className="m-auto mb-1 w-full"
+              />
+              <h2 className="font-medium">{book.title}</h2>
+              <p className="text-xs">{book.authors.join(', ')}</p>
+            </Link>
           </div>
         );
       })}
