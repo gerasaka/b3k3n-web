@@ -12,7 +12,11 @@ const BookCard = ({ books }: Props) => {
       {books.map((book) => {
         return (
           <div key={book.id} className="basis-0">
-            <Link to={`/books/${book.id}`}>
+            <Link
+              to={`/books/${book.id}`}
+              state={book}
+              className="cursor-pointer"
+            >
               <img
                 src={book.cover_url}
                 alt={book.title.toLowerCase()}
