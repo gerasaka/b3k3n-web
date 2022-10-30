@@ -1,8 +1,9 @@
 import React from 'react';
 
-import BookCard from '../components/BookCard';
+import BookWrapper from '../components/BookWrapper';
 import Navbar from '../components/Navbar';
-import { BookType } from '../types/book.type';
+
+import { BookType } from '../types';
 
 type Props = {
   books: BookType[];
@@ -13,7 +14,7 @@ const Bookmark = ({ books }: Props) => {
     <>
       <Navbar />
       <p className="text-xl font-bold mb-4">Select Category</p>
-      <BookCard books={books} />
+      <BookWrapper books={books} />
     </>
   );
 };

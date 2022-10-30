@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { CategoryType } from '../types/category.type';
-import { ParamType } from '../types/param.type';
+import { CategoryType, ParamType } from '../types';
 
 type Props = {
   categories: CategoryType[];

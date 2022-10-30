@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ParamType } from '../types/param.type';
+import { ParamType } from '../types';
 
 type Props = {
   currentPage: number;
@@ -51,8 +51,8 @@ const Pagination = ({ currentPage, setPage }: Props) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <hr className="my-4" />
+    <div className="max-w-2xl mx-auto mb-4">
+      <hr className="mt-8 mb-4" />
       <div className="flex gap-6 justify-center">
         {pageBefore}
         <button>
