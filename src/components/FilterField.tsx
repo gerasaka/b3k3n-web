@@ -7,10 +7,12 @@ type Props = {
 
 const FilterField = ({ search, currentCategory }: Props) => {
   return (
-    <div className="max-w-2xl mx-auto mb-8 mt-8">
-      <h2 className="font-serif text-4xl">{currentCategory}</h2>
-      <hr className="my-4" />
-      <div className="flex gap-6">
+    <div className="lg:max-w-2xl mx-auto mb-4 mt-4 lg:mb-8 lg:mt-8">
+      <h2 className="font-serif text-2xl text-center lg:text-left lg:text-4xl">
+        {currentCategory}
+      </h2>
+      <hr className="text-gainsboro my-2 lg:my-4" />
+      <div className="flex gap-2 lg:gap-6 text-sm">
         <input
           type="search"
           name="search"
