@@ -1,8 +1,8 @@
 import React from 'react';
 
-import BookCard from '../components/BookCard';
+import BookWrapper from '../components/BookWrapper';
 import CategoryField from '../components/CategoryField';
-import PageControl from '../components/PageControl';
+import FilterField from '../components/FilterField';
 import Pagination from '../components/Pagination';
 
 import { BookType, CategoryType, ParamType } from '../types';
@@ -40,11 +40,15 @@ const Home = ({
     setFilteredBooks(searchBooks);
   };
 
+  const currentCategory =
+    categories.find((category) => Number(category.id) === params.categoryId)
+      ?.name ?? 'No category selected';
+
   return (
     <div>
       <CategoryField categories={categories} setParams={setParams} />
-      <PageControl search={handleSearch} />
-      <BookCard books={filteredBooks} />
+      <FilterField search={handleSearch} currentCategory={currentCategory} />
+      <BookWrapper books={filteredBooks} />
       <Pagination currentPage={params.page} setPage={setParams} />
     </div>
   );
