@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import BookDetails from './components/BookDetails';
+import BookDetails from './pages/BookDetails';
 import Navbar from './components/Navbar';
 import Bookmark from './pages/Bookmark';
 import Home from './pages/Home';
