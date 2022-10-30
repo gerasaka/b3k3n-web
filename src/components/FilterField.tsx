@@ -2,12 +2,13 @@ import React from 'react';
 
 type Props = {
   search: (query: string) => void;
+  currentCategory: string;
 };
 
-const PageControl = ({ search }: Props) => {
+const FilterField = ({ search, currentCategory }: Props) => {
   return (
-    <div className="max-w-2xl mx-auto mb-12 mt-8">
-      <h2 className="font-serif text-4xl">Happiness & Mindfullness</h2>
+    <div className="max-w-2xl mx-auto mb-8 mt-8">
+      <h2 className="font-serif text-4xl">{currentCategory}</h2>
       <hr className="my-4" />
       <div className="flex gap-6">
         <input
@@ -31,4 +32,4 @@ const PageControl = ({ search }: Props) => {
   );
 };
 
-export default PageControl;
+export default FilterField;
