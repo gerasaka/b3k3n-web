@@ -16,7 +16,7 @@ const BookCard = ({ book }: Props) => {
           alt={book.title.toLowerCase()}
           className="m-auto mb-1 w-full"
         />
-        <h2 className="font-medium">{book.title}</h2>
+        <h2 className="font-medium text-sm lg:text-base">{book.title}</h2>
         <p className="text-xs">{book.authors.join(', ')}</p>
       </Link>
     </div>
