@@ -51,9 +51,9 @@ const Pagination = ({ currentPage, setPage }: Props) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mb-4">
-      <hr className="mt-8 mb-4" />
-      <div className="flex gap-6 justify-center">
+    <div className="max-w-2xl mx-auto mb-2 lg:mb-4">
+      <hr className="mt-2 mb-2 lg:mt-8 lg:mb-4 text-gainsboro" />
+      <div className="flex gap-5 lg:gap-6 text-xs lg:text-base justify-center">
         {pageBefore}
         <button>
           <span className="before:block before:absolute before:-inset-1 before:rounded-full before:h-7 before:w-7 before:-left-3 before:top-1 before:bg-sinbad relative inline-block">
