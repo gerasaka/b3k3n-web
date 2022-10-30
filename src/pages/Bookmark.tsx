@@ -1,7 +1,6 @@
 import React from 'react';
 
 import BookWrapper from '../components/BookWrapper';
-import Navbar from '../components/Navbar';
 
 import { BookType } from '../types';
 
@@ -11,11 +10,14 @@ type Props = {
 
 const Bookmark = ({ books }: Props) => {
   return (
-    <>
-      <Navbar />
-      <p className="text-xl font-bold mb-4">Select Category</p>
-      <BookWrapper books={books} />
-    </>
+    <div className="w-10/12 mx-auto">
+      <h1 className="text-xl font-bold mb-8 text-center">Bookmarked Books</h1>
+      {books.length === 0 ? (
+        <p className="text-2xl text-terracota">Noting to see</p>
+      ) : (
+        <BookWrapper books={books} />
+      )}
+    </div>
   );
 };
 
