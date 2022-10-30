@@ -38,7 +38,7 @@ function App() {
   }, [params]);
 
   return (
-    <div className="py-4 max-w-5xl mx-auto">
+    <div className="py-2 px-2 lg:py-4 max-w-5xl mx-auto">
       <Navbar />
       <Routes>
         <Route

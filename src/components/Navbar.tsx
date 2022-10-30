@@ -7,10 +7,10 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between mb-4">
       <Link to={'/'}>
-        <img src={logo} alt="logo" className="h-10" />
+        <img src={logo} alt="logo" className="h-8 sm:h-10" />
       </Link>
       <Link to="/bookmark" className="self-center">
-        Bookmark
+        <p className="text-sm lg:text-base">Bookmark</p>
       </Link>
     </nav>
   );
