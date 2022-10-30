@@ -16,10 +16,10 @@ const CategoryField = ({ categories, setParams }: Props) => {
   };
 
   return (
-    <div className="text-center">
-      <p className="text-xl font-bold mb-4">Select Category</p>
+    <div className="lg:text-center">
+      <p className="hidden lg:block text-xl font-bold mb-4">Select Category</p>
 
-      <div className="flex justify-center flex-wrap gap-4">
+      <div className="flex lg:justify-center flex-nowrap overflow-x-auto lg:flex-wrap gap-4">
         {categories.map((category) => {
           const selected = selectedCategory === Number(category.id);
 
@@ -29,7 +29,7 @@ const CategoryField = ({ categories, setParams }: Props) => {
               onClick={() => handleCategoryChange(category.id)}
               className={`${
                 selected ? 'bg-paradiso text-seashell-peach' : 'bg-gainsboro'
-              } text-sm py-2 px-6 rounded-full`}
+              } whitespace-nowrap text-xs lg:text-sm py-2 px-4 lg:px-6 rounded-full`}
             >
               {category.name}
             </button>
