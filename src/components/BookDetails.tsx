@@ -9,7 +9,7 @@ import { BookType } from '../types/book.type';
 
 type Props = {
   bookmarkList: BookType[] | [];
-  setBookmark: React.Dispatch<React.SetStateAction<[] | BookType[]>>;
+  setBookmarkList: React.Dispatch<React.SetStateAction<[] | BookType[]>>;
 };
 
 type Section = {
@@ -17,7 +17,7 @@ type Section = {
   content: string;
 };
 
-const BookDetails = ({ bookmarkList, setBookmark }: Props) => {
+const BookDetails = ({ bookmarkList, setBookmarkList }: Props) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const book = useLocation().state;
 
@@ -28,7 +28,20 @@ const BookDetails = ({ bookmarkList, setBookmark }: Props) => {
   }, []);
 
   const handleToogleBookmark = () => {
-    setBookmark((prev) => [...prev]);
+    if (isBookmarked) removeFromBookmarkList();
+    else addToBookmarkList();
+
+    setIsBookmarked(!isBookmarked);
+  };
+
+  const addToBookmarkList = () => {
+    setBookmarkList((prev) => [...prev, book]);
+  };
+
+  const removeFromBookmarkList = () => {
+    const filteredBooks = bookmarkList.filter((list) => list.id !== book.id);
+    setBookmarkList(filteredBooks);
+    localStorage.setItem('b3k3n-books', JSON.stringify(filteredBooks));
   };
 
   return (
@@ -46,7 +59,10 @@ const BookDetails = ({ bookmarkList, setBookmark }: Props) => {
           <div className="flex gap-6 items-center border-t-2 border-b-2 p-1 my-4">
             <p>{book.sections.length} chapters</p>
             <p>{book.audio_length / 60} minutes</p>
-            <button className="h-8 px-3 rounded-lg bg-gainsboro">
+            <button
+              className="h-8 px-3 rounded-lg bg-gainsboro"
+              onClick={handleToogleBookmark}
+            >
               bookmark
             </button>
           </div>

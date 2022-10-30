@@ -13,15 +13,24 @@ function App() {
   const [bookmarkedBooks, setBookmarkedBooks] = useState<BookType[] | []>([]);
 
   useEffect(() => {
-    const bookmark = localStorage.getItem('b3k3n-books');
-    if (bookmark) setBookmarkedBooks(JSON.parse(bookmark));
+    const bookmark: string = localStorage.getItem('b3k3n-books') || '[]';
+
+    if (bookmark.length > 2) setBookmarkedBooks(JSON.parse(bookmark));
   }, []);
 
   return (
     <div className="py-4 max-w-5xl mx-auto">
       <Routes>
-        <Route path="/" element={<Home setBookmark={setBookmarkedBooks} />} />
-        <Route path="/books/:id" element={<BookDetails />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/books/:id"
+          element={
+            <BookDetails
+              bookmarkList={bookmarkedBooks}
+              setBookmarkList={setBookmarkedBooks}
+            />
+          }
+        />
         <Route
           path="/bookmark"
           element={<Bookmark books={bookmarkedBooks} />}
