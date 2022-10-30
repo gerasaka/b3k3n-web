@@ -1,6 +1,10 @@
 import React from 'react';
 
-const PageControl = () => {
+type Props = {
+  search: (query: string) => void;
+};
+
+const PageControl = ({ search }: Props) => {
   return (
     <div className="max-w-2xl mx-auto mb-12 mt-8">
       <h2 className="font-serif text-4xl">Happiness & Mindfullness</h2>
@@ -10,7 +14,9 @@ const PageControl = () => {
           type="search"
           name="search"
           id="search"
+          placeholder="Search this page by book title or author name"
           className="h-8 px-3 grow rounded-lg bg-gainsboro"
+          onChange={(e) => search(e.target.value)}
         />
         <select
           name="sort"
