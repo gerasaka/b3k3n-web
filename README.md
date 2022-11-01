@@ -4,7 +4,8 @@
 
 ### The challenge
 
-    Sejutacita is looking to expand its B3k3n service to web application. We invite you to help us designing and creating a working web application of B3k3n.
+    Sejutacita is looking to expand its B3k3n service to web application.
+    We invite you to help us designing and creating a working web application of B3k3n.
 
 - We expose two API `Category API` and `Book API`
 - It needs to be built using React.js
@@ -33,7 +34,7 @@
 
 3. `page` param should start from 1
 
-```JSON
+```typescript
 {
   status: 'ok' | 'error',
   message: 'Book found | Category found' | 'Error ...',
@@ -56,7 +57,7 @@
 
 ## How to run this project locally
 
-*Make sure you already had NodeJS ver >= 14 installed*
+_Make sure you already had NodeJS ver >= 14 installed_
 
 ### Clone repo
 
@@ -69,7 +70,7 @@ $ cd b3k3n-web
 
 ### Install dependencies
 
-*By default this project use `yarn` as package manager, but you can use another package manager like `npm`*
+_By default this project use `yarn` as package manager, but you can use another package manager like `npm`_
 
 ```bash
 # yarn
