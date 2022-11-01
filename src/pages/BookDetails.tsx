@@ -2,6 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import {
+  Headphones,
+  ListOrdered,
+  Clock4,
+  BookOpen,
+  Bookmark,
+} from 'lucide-react';
 
 import { BookType } from '../types';
 
@@ -23,7 +30,7 @@ const BookDetails = ({ bookmarkList, setBookmarkList }: Props) => {
     if (bookmarkList.find((bookmarkedBook) => bookmarkedBook.id === book.id)) {
       setIsBookmarked(!isBookmarked);
     }
-  }, [bookmarkList, isBookmarked, book.id]);
+  }, []);
 
   const handleToogleBookmark = () => {
     if (isBookmarked) removeFromBookmarkList();
@@ -58,28 +65,41 @@ const BookDetails = ({ bookmarkList, setBookmarkList }: Props) => {
             {book.authors.join(', ')}
           </h3>
 
-          <div className="w-full lg:w-2/3 flex gap-4 lg:gap-6 text-sm lg:text-base">
-            <button className="h-9 w-full rounded-lg bg-sinbad">Listen</button>
-            <button className="h-9 w-full rounded-lg bg-paradiso text-seashell-peach">
-              Read
+          <div className="w-full lg:w-2/3 flex gap-4 lg:gap-6 text-sm lg:text-base align-middle">
+            <button className="h-9 w-full rounded-lg bg-sinbad">
+              <Headphones size={20} className="inline mx-1" />
+              <span className="align-middle">Listen</span>
+            </button>
+            <button className="h-9 w-full rounded-lg bg-paradiso text-seashell-peach align-middle">
+              <BookOpen size={20} className="inline mx-1" />
+              <span className="align-middle text-seashell-peach">Read</span>
             </button>
           </div>
 
           <div className="flex gap-6 items-center border-t-2 border-b-2 border-gainsboro px-4 lg:p-1 mt-4 mb-2 lg:mb-4">
-            <p className="text-xs lg:text-base">
-              {book.sections.length} chapters
+            <p className="text-xs lg:text-base align-middle">
+              <ListOrdered size={20} className="inline mx-1" />
+              <span className="align-middle">
+                {book.sections.length} chapters
+              </span>
             </p>
             <p className="text-xs lg:text-base">
-              {Math.ceil(book.audio_length / 60)} minutes
+              <Clock4 size={20} className="inline mx-1" />
+              <span className="align-middle">
+                {Math.ceil(book.audio_length / 60)} minutes
+              </span>
             </p>
             <button
               className="h-8 px-3 rounded-lg ml-auto"
               onClick={handleToogleBookmark}
             >
-              <span className="hidden lg:inline mr-2">Bookmark</span>
-              <span className="bg-paradiso inline-block h-5 w-5 lg:h-6 lg:w-6 rounded-full">
-                O
-              </span>
+              <span className="hidden lg:inline align-middle">Bookmark</span>
+              <Bookmark
+                size={20}
+                className={`inline mx-1 ${
+                  isBookmarked ? 'text-terracota' : 'text-gainsboro'
+                }`}
+              />
             </button>
           </div>
 
